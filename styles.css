@@ -1,1 +1,243 @@
+.economica-regular {
+  font-family: "Economica", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
+.economica-bold {
+  font-family: "Economica", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.economica-regular-italic {
+  font-family: "Economica", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.economica-bold-italic {
+  font-family: "Economica", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+.txt-indent{margin-left: 2em;}
+
+.highlight-w {
+    background-color: white;
+    color: black;
+    padding: 0 0.3em;
+}
+
+.highlight-b {
+    background-color: black;
+    color: white;
+    padding: 0 0.3em;
+}
+
+
+body {
+    width: 100%;
+    /*background: #000a2e;/**/
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.banner {
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: .7em;
+    border-bottom: 1px solid black;
+}
+.banner-alert{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: orangered;
+    font-family: "Economica", sans-serif;
+    font-weight: bolder;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: xx-large;
+    text-align: center;
+    animation: 3s banner-alert infinite;
+}
+@keyframes banner-alert{
+    0%{margin-left: 100%;}
+    100%{margin-left: -120%}
+    
+}
+.banner-alert span{
+    border:0 solid red; 
+    border-width: 0 0.4em;
+    height: 100%;
+}
+
+/* Contextual banner colors */
+.banner.next {
+    background-color: darkslategrey;
+}
+
+.banner.today {
+    background-color: greenyellow;
+}
+
+.banner.now {
+  background-color: red;
+}
+.banner .banner-alert{
+    display: none;
+}
+.banner.now .banner-alert{
+    display: flex;
+}
+.banner-track {
+  display: flex;
+  width:100%;
+    position: relative;
+    height:1em;
+  font-family: "Economica", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+    text-transform: uppercase;
+  /*animation: scroll-left 2s linear ;/**/
+}
+
+.banner-content {
+  white-space: nowrap;
+    align-content: center;
+    position: absolute;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.banner-track .banner-content:nth-child(1) {
+    animation-name: banner-scroll-a;
+}
+.banner-track .banner-content:nth-child(2){
+    animation-name: banner-scroll-b;
+}
+.banner-content .highlight-b{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-content .highlight-b::before,.banner-content .highlight-b::after{
+    display: flex;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-style: double;
+    border-color: black;
+    animation: banner-text 1s ease-out infinite alternate-reverse;
+
+}
+.banner-content .highlight-b::after{
+    animation: banner-text 1.5s ease-out infinite;
+}
+
+@keyframes banner-text{
+    0%{border-width: 0;}
+    50%{border-width: 3px;}
+    88%{border-width: 3px;}
+    100%{border-width: 0;}
+}
+@keyframes banner-scroll-a {
+    0%   { margin-left:0%;}
+    50% { margin-left: -100%; opacity: 1}
+    50.0001% { margin-left: 100%; opacity: 0}
+    60%{opacity: 1;}
+    100%{margin-left: 0%;}
+}
+@keyframes banner-scroll-b {
+    0%   { margin-left: 100%; opacity: 0;}
+    10%{opacity: 1;}
+    50%  { margin-left: 0%;}
+   100%  { margin-left: -100%; opacity: 1;}
+}
+
+
+nav{
+    display: flex;
+    width: 100%;
+}
+.nav-logo{
+    width: 100%;
+}
+.logo-title{
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    border: 0 solid black;
+    border-width: 3px 0;
+    padding: 5px 0;
+    margin-top: 0.4em;
+    
+}
+
+Section, Footer{
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vh;
+    margin: auto;
+    
+    font-family: "Economica", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+}
+Section{
+    margin-top: 3em;
+    padding-bottom: 2em;
+}
+.map{
+    width: 60%;
+    height: 40vh;
+    background-image: url(images/FullMap.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+.details{
+    height: 100%;
+    display: block;
+}
+.qr{
+    width: 4em;
+    height: 4em;
+    background-image: url(images/QR.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.logo-graphic{
+    width: 30%;
+    height: 20vh;
+    margin-right: 1em;
+    background-image: url(images/ATRALogo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.txt{
+    width: 70%;
+    
+}
