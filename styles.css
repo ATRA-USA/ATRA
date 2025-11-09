@@ -158,16 +158,16 @@ body {
     100%{border-width: 0;}
 }
 @keyframes banner-scroll-a {
-    0%   { margin-left:0%;}
+    0%   { margin-left:10%;}
     50% { margin-left: -100%; opacity: 1}
     50.0001% { margin-left: 100%; opacity: 0}
     60%{opacity: 1;}
-    100%{margin-left: 0%;}
+    100%{margin-left: 10%;}
 }
 @keyframes banner-scroll-b {
     0%   { margin-left: 100%; opacity: 0;}
     10%{opacity: 1;}
-    50%  { margin-left: 0%;}
+    50%  { margin-left: 10%;}
    100%  { margin-left: -100%; opacity: 1;}
 }
 
