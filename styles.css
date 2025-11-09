@@ -211,7 +211,7 @@ Section{
 .map{
     width: 60%;
     height: 40vh;
-    background-image: url(images/FullMap.png);
+    background-image: url("images/FullMap.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top right;
@@ -223,7 +223,7 @@ Section{
 .qr{
     width: 4em;
     height: 4em;
-    background-image: url(images/QR.png);
+    background-image: url("images/QR.png");
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -231,7 +231,7 @@ Section{
     width: 30%;
     height: 20vh;
     margin-right: 1em;
-    background-image: url(images/ATRALogo.png);
+    background-image: url("images/ATRALogo.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
