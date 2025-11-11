@@ -1,248 +1,490 @@
-.economica-regular {
-  font-family: "Economica", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+:root {
+    /* Widths & Layout */
+    --w-full: 100%;
+    --w-section: 90%;
+    --w-map: 90%;
+    --w-logo: 60%;
+    --w-redalert-inner: 70%;
+    --w-redalert-anim-start: 0%;
+    --w-redalert-anim-mid: 10%;
+    --w-redalert-anim-wide: 50%;
+    --w-redalert-anim-max: 100%;
+
+    /* Font Sizes */
+    --font-title: 5vw;
+    --font-menu: 4vw;
+    --font-banner-left: 3.5vw;
+    --font-banner-right: 5vw;
+    --font-track: 3vw;
+    --font-address: 4vw;
+    --font-redalert: 20vw;
+
+    /* Padding & Margin */
+    --pad-menu: 6vw;
+    --pad-banner: 2vw;
+    --pad-highlight: 0.3em;
+    --margin-title-bottom: 3vw;
+    --margin-banner-bottom: 5vw;
+    --margin-section-bottom: 10vw;
+    --margin-logo: 1.5vw;
+    /* Banner Track */
+    --space-track: 10vw;
+
+    /* Borders */
+    --border-title: 0.3vw solid black;
+    --border-menu: 0.1vw solid black;
+    --border-redalert: 3vw solid white;
+    --border-redalert-top: 10vw;
+    --border-redalert-bottom: 10vw;
+
+    /* Animation */
+    --anim-banner-intro-duration: 5s;
+    --anim-banner-loop-duration: 12s;
+    --anim-redalert-duration: 2s;
+    --anim-hide-this-duration: 3s;
+
+    /* Colors */
+    --color-bg-white: white;
+    --color-bg-black: black;
+    --color-bg-red: red;
+    --color-bg-aqua: aquamarine;
+    --color-bg-green: greenyellow;
+    --color-text-white: white;
+    --color-text-black: black;
+    --color-text-red: red;
+    --color-text-aqua: aquamarine;
+    --color-text-green: greenyellow;
+
+    /* Misc */
+    --z-hidden: -1;
+    --z-visible: 3;
+    --opacity-full: 1;
+    --opacity-mid: 0.7;
+    --opacity-none: 0;
 }
 
-.economica-bold {
-  font-family: "Economica", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+@media (max-width: 768px) {
+    :root {
+        /* Widths & Layout */
+        --w-section: 90%;
+        --w-map: 40%;
+        --w-logo: 40%;
+        --w-redalert-inner: 50%;
+        --w-redalert-anim-mid: 6%;
+        --w-redalert-anim-wide: 30%;
+
+        /* Font Sizes (scale down from vw to rem for consistency) */
+        --font-title: 3rem;
+        --font-menu: 1.5rem;
+        --font-banner-left: 1.25rem;
+        --font-banner-right: 2rem;
+        --font-track: 1rem;
+        --font-address: 1.25rem;
+        --font-redalert: 8rem;
+
+        /* Padding & Margin (reduce vw-based spacing) */
+        --pad-menu: 2rem;
+        --pad-banner: 0.5rem;
+        --margin-title-bottom: 1.5rem;
+        --margin-banner-bottom: 2rem;
+        --margin-section-bottom: 3rem;
+        --margin-logo: 0.75rem;
+
+        /* Banner Track */
+        --space-track: 5rem;
+
+        /* Borders (reduce thickness for desktop) */
+        --border-title: 2px solid black;
+        --border-menu: 1px solid black;
+        --border-redalert: 1rem solid white;
+        --border-redalert-top: 3rem;
+        --border-redalert-bottom: 3rem;
+    }
+    .map img {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
+    }
+    .map::after {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
+    }
 }
 
-.economica-regular-italic {
-  font-family: "Economica", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
+/* Typography */
+.economica-regular,
+.economica-bold,
+.economica-regular-italic,
 .economica-bold-italic {
-  font-family: "Economica", sans-serif;
-  font-weight: 700;
-  font-style: italic;
+    font-family: "Economica", sans-serif;
+}
+.economica-regular {
+    font-weight: 400;
+    font-style: normal;
+}
+.economica-bold {
+    font-weight: 700;
+    font-style: normal;
+}
+.economica-regular-italic {
+    font-weight: 400;
+    font-style: italic;
+}
+.economica-bold-italic {
+    font-weight: 700;
+    font-style: italic;
 }
 
-
-.txt-indent{margin-left: 2em;}
-
-.highlight-w {
-    background-color: white;
-    color: black;
-    padding: 0 0.3em;
-}
-
-.highlight-b {
-    background-color: black;
-    color: white;
-    padding: 0 0.3em;
-}
-
-
-body {
-    width: 100%;
-    /*background: #000a2e;/**/
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-}
-
-.banner {
-    overflow: hidden;
-    top: 0;
-    width: 100%;
-    padding-top: 1em;
-    padding-bottom: .7em;
-    border-bottom: 1px solid black;
-}
-.banner-alert{
-    position: absolute;
-    justify-content: center;
-    align-items: center;
+/* Title */
+.txt-title {
+    font-size: var(--font-title);
+    text-transform: uppercase;
     display: flex;
+    width: var(--w-full);
+    border-bottom: var(--border-title);
+    margin-bottom: var(--margin-title-bottom);
+}
+.highlight-w,
+.highlight-b {
+    padding: 0 var(--pad-highlight);
+}
+.highlight-w {
+    background-color: var(--color-bg-white);
+    color: var(--color-text-black);
+}
+.highlight-b {
+    background-color: var(--color-bg-black);
+    color: var(--color-text-white);
+}
+
+/* Layout */
+body {
+    font-family: "Economica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.body-container {
     width: 100%;
     height: 100%;
+    position: relative;
+}
+#MainMenu {
+    position: relative;
+    width: 100%;
+}
+.atra {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.atra-logo {
+    width: var(--w-logo);
+    margin-top: var(--margin-logo);
+    margin-left: var(--margin-logo);
+}
+.atra-name {
+    display: block;
+    font-size: var(--font-title);
+    text-transform: uppercase;
+    margin: auto;
+}
+.menu {
+    position: relative;
+    width: 100%;
+}
+.menu ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: var(--font-menu);
+    border-bottom: 0.1vw solid black;
+}
+.menu li {
+    padding: var(--pad-menu) 0;
+}
+.menu a {
+    width: 100%;
+}
+
+/* Banner */
+.banner {
+    width: var(--w-full);
+    position: relative;
+    display: block;
+    margin-bottom: var(--margin-banner-bottom);
+}
+.banner-content {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.next .banner-track {
+    background-color: var(--color-bg-aqua);
+}
+.today .banner-track {
+    background-color: var(--color-bg-green);
+}
+.now .banner-track {
+    background-color: var(--color-bg-red);
+}
+
+.next .banner-date {
+    color: var(--color-text-aqua);
+    background-color: var(--color-bg-black);
+}
+.today .banner-date {
+    color: var(--color-text-green);
+    background-color: var(--color-bg-black);
+}
+.now .banner-date {
+    color: var(--color-text-red);
+    background-color: var(--color-bg-black);
+}
+
+.banner-track {
+    width: var(--w-full);
+    position: relative;
+    font-size: var(--font-track);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: var(--pad-banner) 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-track-space {
+    width: var(--space-track);
+}
+.banner-track .banner-content {
+    width: var(--w-full);
+    height: var(--w-full);
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    white-space: nowrap;
+    animation: banner-anim var(--anim-banner-loop-duration) infinite linear;
+    position: absolute;
     top: 0;
     left: 0;
-    color: white;
-    background-color: orangered;
-    font-family: "Economica", sans-serif;
-    font-weight: bolder;
-    font-style: normal;
-    text-transform: uppercase;
-    font-size: xx-large;
-    text-align: center;
-    animation: 3s banner-alert infinite;
+    opacity: var(--opacity-none);
 }
-@keyframes banner-alert{
-    0%{margin-left: 100%;}
-    100%{margin-left: -120%}
-    
-}
-.banner-alert span{
-    border:0 solid red; 
-    border-width: 0 0.4em;
-    height: 100%;
-}
-
-/* Contextual banner colors */
-.banner.next {
-    background-color: darkslategrey;
-}
-
-.banner.today {
-    background-color: greenyellow;
-}
-
-.banner.now {
-  background-color: red;
-}
-.banner .banner-alert{
-    display: none;
-}
-.banner.now .banner-alert{
-    display: flex;
-}
-.banner-track {
-  display: flex;
-  width:100%;
-    position: relative;
-    height:1em;
-  font-family: "Economica", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-    text-transform: uppercase;
-  /*animation: scroll-left 2s linear ;/**/
-}
-
-.banner-content {
-  white-space: nowrap;
-    align-content: center;
-    position: absolute;
-    animation-duration: 60s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
 .banner-track .banner-content:nth-child(1) {
-    animation-name: banner-scroll-a;
-}
-.banner-track .banner-content:nth-child(2){
-    animation-name: banner-scroll-b;
-}
-.banner-content .highlight-b{
+    animation-name: none;
     position: relative;
-    display: inline-flex;
+    animation: var(--anim-banner-intro-duration) banner-anim-intro;
+}
+.banner-track .banner-content:nth-child(3) {
+    animation-delay: 4s;
+}
+.banner-track .banner-content:nth-child(4) {
+    animation-delay: 8s;
+}
+
+.banner-date {
+    position: relative;
+    height: auto;
+    width: var(--w-full);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: var(--pad-banner) 0;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.banner-date-left,
+.banner-date-right {
+    margin: auto;
+    height: var(--w-full);
+    display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
-.banner-content .highlight-b::before,.banner-content .highlight-b::after{
+.banner-date-left {
+    font-size: var(--font-banner-left);
+}
+.banner-date-right {
+    font-size: var(--font-banner-right);
+}
+
+/* Red Alert */
+#RedAlert {
+    position: fixed;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--color-bg-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-white);
+    text-transform: uppercase;
+    font-size: var(--font-redalert);
+    border: 1pt solid green;
+    animation: hide-this var(--anim-hide-this-duration);
+    z-index: var(--z-hidden);
+    opacity: var(--opacity-none);
+}
+#RedAlert div {
+    border: var(--border-redalert);
+    border-left-width: 0;
+    border-right-width: 0;
+    position: absolute;
+    width: var(--w-redalert-inner);
+    animation: red-alert-anim var(--anim-redalert-duration);
+}
+#RedAlert div:nth-child(1) {
+    height: 20%;
+}
+#RedAlert div:nth-child(2) {
+    height: 35%;
+    animation-delay: 0.1s;
+}
+#RedAlert div:nth-child(3) {
+    height: 50%;
+    animation-delay: 0.2s;
+}
+#RedAlert div:nth-child(4) {
+    height: 65%;
+    animation-delay: 0.3s;
+}
+#RedAlert div:nth-child(5) {
+    height: 80%;
+    animation-delay: 0.4s;
+}
+/* Sections */
+section {
+    position: relative;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.25;
+    margin: auto;
+    margin-bottom: var(--margin-section-bottom);
+    width: var(--w-section);
+}
+/*Maps and address*/
+.map img {
+    position: relative;
+    display: flex;
+    margin: auto;
+    width: var(--w-map);
+    height: 100%;
+}
+.map::after {
     display: flex;
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    border-style: double;
-    border-color: black;
-    animation: banner-text 1s ease-out infinite alternate-reverse;
-
-}
-.banner-content .highlight-b::after{
-    animation: banner-text 1.5s ease-out infinite;
-}
-
-@keyframes banner-text{
-    0%{border-width: 0;}
-    50%{border-width: 3px;}
-    88%{border-width: 3px;}
-    100%{border-width: 0;}
-}
-@keyframes banner-scroll-a {
-    0%   { margin-left:10%;}
-    50% { margin-left: -100%; opacity: 1}
-    50.0001% { margin-left: 100%; opacity: 0}
-    60%{opacity: 1;}
-    100%{margin-left: 10%;}
-}
-@keyframes banner-scroll-b {
-    0%   { margin-left: 100%; opacity: 0;}
-    10%{opacity: 1;}
-    50%  { margin-left: 10%;}
-   100%  { margin-left: -100%; opacity: 1;}
-}
-
-
-nav{
-    display: flex;
-    width: 100%;
-}
-.nav-logo{
-    width: 100%;
-}
-.logo-title{
-    text-transform: uppercase;
-    width: 100%;
-    text-align: center;
-    font-size: xx-large;
-    border: 0 solid black;
-    border-width: 3px 0;
-    padding: 5px 0;
-    margin-top: 0.4em;
-    
-}
-
-#BasicInfo, #BottomBleh{
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vw;
-    margin: auto;
-    
-    font-family: "Economica", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-
-}
-#BasicInfo{
-    margin-top: 3em;
-    padding-bottom: 2em;
-
-}
-#BottomBleh{
-    width: 70%;
-    margin: auto;
-}
-.map{
-    width: 60%;
-    height: 30vw;
-    background-image: url(images/FullMap.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top center;
-}
-.details{
-    height: 100%;
-    display: block;
-}
-.qr{
-    width: 4em;
-    height: 4em;
-    background-image: url(images/QR.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-.logo-graphic{
-    width: 30%;
-    height: 20vh;
-    margin-right: 1em;
-    background-image: url(images/ATRALogo.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+    top: 0;
+    left: 0;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--color-bg-white);
     background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("images/FullMap.png");
+    animation: 10s map-zoom infinite alternate-reverse;
 }
+.address {
+    font-size: var(--font-address);
+}
+/*animations*/
 
-.txt{
-    width: 70%;
-    
+@keyframes banner-anim-intro {
+    0% {
+        opacity: var(--opacity-full);
+    }
+    5% {
+        opacity: var(--opacity-mid);
+    }
+    10% {
+        opacity: var(--opacity-full);
+    }
+    15% {
+        opacity: var(--opacity-mid);
+    }
+    30% {
+        opacity: var(--opacity-full);
+    }
+    100% {
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes banner-anim {
+    0% {
+        margin-left: var(--w-full);
+        opacity: var(--opacity-full);
+    }
+    100% {
+        margin-left: -100%;
+        opacity: var(--opacity-full);
+    }
+}
+@keyframes hide-this {
+    0%,
+    50% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-full);
+    }
+    95% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-none);
+    }
+    100% {
+        z-index: var(--z-hidden);
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes red-alert-anim {
+    0% {
+        width: var(--w-redalert-anim-start);
+    }
+    5% {
+        width: var(--w-redalert-anim-mid);
+        border-top-width: var(--border-redalert-top);
+        border-bottom-width: var(--border-redalert-bottom);
+    }
+    30% {
+        width: var(--w-redalert-anim-mid);
+        height: var(--w-full);
+    }
+    60% {
+        width: var(--w-redalert-anim-wide);
+        height: 20%;
+    }
+    80%,
+    95% {
+        height: 20%;
+        width: var(--w-redalert-anim-max);
+    }
+    100% {
+        height: 20%;
+        width: var(--w-redalert-anim-start);
+    }
+}
+@keyframes map-zoom {
+    0%,
+    30% {
+        background-size: 70%;
+        background-position: 50%;
+        filter: saturate(60%);
+    }
+    50%,
+    80% {
+        background-size: 120%;
+        background-position: 160% 95%;
+    }
+    85% {
+        background-size: 123%;
+        background-position: 160% 100%;
+    }
+    100% {
+        background-size: 70%;
+        background-position: 50% 50%;
+    }
 }
