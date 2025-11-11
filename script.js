@@ -1,179 +1,553 @@
-let scrollStarted = false;
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+    :root {
+        /* Widths & Layout */
+        --w-section: 90%;
+        --w-map: 40%;
+        --w-logo: 40%;
+        --w-redalert-inner: 50%;
+        --w-redalert-anim-mid: 6%;
+        --w-redalert-anim-wide: 30%;
+        --w-volume-btn: 4vw;
 
-function onPageLoaded() {
-  console.log("page loaded");
-  renderBannerStructure();
- /* updateClock();*/
-  updateBannerContent();
-  setInterval(updateBannerContent, 1000);
-}
+        /* Font Sizes (scale down from vw to rem for consistency) */
+        --font-title: 3rem;
+        --font-menu: 1.5rem;
+        --font-banner-left: 1.25rem;
+        --font-banner-right: 2rem;
+        --font-track: 1rem;
+        --font-address: 1.25rem;
+        --font-redalert: 8rem;
 
-function calculateRallyTiming() {
-    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
-    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+        /* Padding & Margin (reduce vw-based spacing) */
+        --pad-menu: 2rem;
+        --pad-banner: 0.5rem;
+        --margin-title-bottom: 1.5rem;
+        --margin-banner-bottom: 2rem;
+        --margin-section-bottom: 3rem;
+        --margin-logo: 0.75rem;
 
-    const rallyStart = new Date(now);
-    rallyStart.setHours(13, 0, 0, 0); // 1pm
+        /* Banner Track */
+        --space-track: 5rem;
 
-    const rallyEnd = new Date(now);
-    rallyEnd.setHours(15, 0, 0, 0); // 3pm
-
-    // m1 t2 w3 th4 f5 s6 sn7
-    const daysUntilSaturday = (6 - day + 7) % 7 || 7; 
-    const nextSaturday = new Date(now);
-    nextSaturday.setDate(now.getDate() + daysUntilSaturday);
-
-    const shortMonth = nextSaturday.toLocaleString("en-US", { month: "short" });
-    const dayNum = nextSaturday.getDate();
-    const formattedRight = `${shortMonth}. ${dayNum}`;
-
-    const timeUntilStartMs = rallyStart - now;
-    const timeUntilEndMs = rallyEnd - now;
-
-    return {
-        now,
-        day,
-        rallyStart,
-        rallyEnd,
-        daysUntilSaturday,
-        nextSaturday,
-        formattedRight,
-        timeUntilStartMs,
-        timeUntilEndMs
-    };
-}
-function getRallyStatusStrings(timing) {
-    const { day, timeUntilStartMs, timeUntilEndMs, formattedRight, daysUntilSaturday } = timing;
-
-    if (day === 6) {
-        if (timeUntilEndMs > 0 && timeUntilStartMs <= 0) {
-            const hrs = Math.floor(timeUntilEndMs / (1000 * 60 * 60));
-            const mins = Math.floor((timeUntilEndMs % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((timeUntilEndMs % (1000 * 60)) / 1000);
-            return {
-                type: "now",
-                track: `Rally Ongoing<span class="banner-track-space"></span>updated live`,
-                left: `right now<br>${hrs}h:${mins}m:${secs}s`,
-                right: "Until 3pm"
-            };
-        } else if (timeUntilStartMs > 0) {
-            const hrs = Math.floor(timeUntilStartMs / (1000 * 60 * 60));
-            const mins = Math.floor((timeUntilStartMs % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((timeUntilStartMs % (1000 * 60)) / 1000);
-            return {
-                type: "today",
-                track: `later today<span class="banner-track-space"></span>updated live`,
-                left: "Saturday,<br>1pm to 3pm",
-                right: `${hrs}h:${mins}m:${secs}s`
-            };
-        }
+        /* Borders (reduce thickness for desktop) */
+        --border-title: 2px solid black;
+        --border-menu: 1px solid black;
+        --border-redalert: 1rem solid white;
+        --border-redalert-top: 3rem;
+        --border-redalert-bottom: 3rem;
     }
- return {
-        type: "next",
-        track: `next rally<span class="banner-track-space"></span><span class="highlight-b">in ${daysUntilSaturday} days</span><span class="banner-track-space"></span>updated live`,
-        left: "Saturday,<br>1pm to 3pm",
-        right: formattedRight
-    };
-}
 
-function updateBanner() {
-    const timing = calculateRallyTiming();
-    const { type, left, right, track } = getRallyStatusStrings(timing);
-
-    const banner = document.getElementById("RallyBanner");
-    banner.className = `banner ${type}`;
-    banner.style.display = "block";
-
-    const sections = [
-        { selector: ".banner-date-left", content: `<div>${left}</div>` },
-        { selector: ".banner-date-right", content: right }
-    ];
-
-    sections.forEach(({ selector, content }) => {
-        const container = banner.querySelector(selector);
-        let contentDiv = container.querySelector(".banner-content");
-
-        if (!contentDiv) {
-            contentDiv = document.createElement("div");
-            contentDiv.className = "banner-content";
-            container.innerHTML = "";
-            container.appendChild(contentDiv);
-        }
-
-        contentDiv.innerHTML = content;
-    });
-
-    updateBannerTrack(track);
-}
-function renderBannerStructure() {
-  const banner = document.getElementById("RallyBanner");
-  banner.className = "banner";
-  banner.style.display = "block";
-
-  const leftContainer = document.querySelector(".banner-date-left");
-  const rightContainer = document.querySelector(".banner-date-right");
-  const trackContainer = document.querySelector(".banner-track");
-
-  // Create content divs if missing
-  [leftContainer, rightContainer, trackContainer].forEach(container => {
-    if (!container.querySelector(".banner-content")) {
-      const contentDiv = document.createElement("div");
-      contentDiv.className = "banner-content";
-      container.innerHTML = "";
-      container.appendChild(contentDiv);
+    .map img {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
     }
-  });
-
-  // Add multiple track spans once
-  trackContainer.innerHTML = "";
-  for (let i = 0; i < 4; i++) {
-    const contentDiv = document.createElement("div");
-    contentDiv.className = "banner-content";
-    trackContainer.appendChild(contentDiv);
-  }
-}
-function updateBannerContent() {
-  const timing = calculateRallyTiming();
-  const { type, left, right, track } = getRallyStatusStrings(timing);
-
-  const banner = document.getElementById("RallyBanner");
-  banner.className = `banner ${type}`;
-
-  const leftContent = document.querySelector(".banner-date-left .banner-content");
-  const rightContent = document.querySelector(".banner-date-right .banner-content");
-  const trackContents = document.querySelectorAll(".banner-track .banner-content");
-
-  if (leftContent) leftContent.innerHTML = `<div>${left}</div>`;
-  if (rightContent) rightContent.innerHTML = right;
-  trackContents.forEach(el => el.innerHTML = track);
-}
-
-function updateBannerTrack(trackText) {
-    const track = document.querySelector(".banner-track");
-    if (!track) return;
-
-    track.innerHTML = ""; // clear existing content
-
-    for (let i = 0; i < 4; i++) {
-        const contentDiv = document.createElement("div");
-        contentDiv.className = "banner-content";
-        contentDiv.innerHTML = trackText;
-        track.appendChild(contentDiv);
+    .map::after {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
+    }
+    .body-content {
+        width: 80%;
     }
 }
-/*
-function updateClock() {
-    const now = new Date(); // Create a new Date object for the current time
-    let hours = now.getHours(); // Get the current hour (0-23)
-    let minutes = now.getMinutes(); // Get the current minute (0-59)
-    let seconds = now.getSeconds(); // Get the current second (0-59)
+@media only screen and (max-device-width: 480px) {
+    :root {
+        /* Widths & Layout */
+        --w-full: 100%;
+        --w-section: 90%;
+        --w-map: 90%;
+        --w-logo: 60%;
+        --w-redalert-inner: 70%;
+        --w-redalert-anim-start: 0%;
+        --w-redalert-anim-mid: 10%;
+        --w-redalert-anim-wide: 50%;
+        --w-redalert-anim-max: 100%;
+        --w-volume-btn: 10vw;
 
-    // Optional: Add leading zeros for single-digit minutes and seconds
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+        /* Font Sizes */
+        --font-title: 5vw;
+        --font-menu: 4vw;
+        --font-banner-left: 3.5vw;
+        --font-banner-right: 5vw;
+        --font-track: 3vw;
+        --font-address: 4vw;
+        --font-redalert: 20vw;
 
-    // Display the time in the HTML element
-    document.getElementById("currentTime").textContent = `${hours}:${minutes}:${seconds}`;
-    setInterval(updateClock, 1000); // 1000 milliseconds = 1 second
+        /* Padding & Margin */
+        --pad-menu: 6vw;
+        --pad-banner: 2vw;
+        --pad-highlight: 0.3em;
+        --margin-title-bottom: 3vw;
+        --margin-banner-bottom: 5vw;
+        --margin-section-bottom: 10vw;
+        --margin-logo: 1.5vw;
+        /* Banner Track */
+        --space-track: 10vw;
+
+        /* Borders */
+        --border-title: 0.3vw solid black;
+        --border-menu: 0.1vw solid black;
+        --border-redalert: 3vw solid white;
+        --border-redalert-top: 10vw;
+        --border-redalert-bottom: 10vw;
+    }
 }
-/**/
+:root {
+    /* Animation */
+    --anim-banner-intro-duration: 5s;
+    --anim-banner-loop-duration: 12s;
+    --anim-redalert-duration: 2s;
+    --anim-hide-this-duration: 3s;
+
+    /* Colors */
+    --hue-white: white;
+    --hue-black: black;
+    --hue-now: red;
+    --hue-soon: aquamarine;
+    --hue-today: greenyellow;
+    --hue-tomorrow: yellow;
+
+    /* Misc */
+    --z-hidden: -1;
+    --z-visible: 3;
+    --opacity-full: 1;
+    --opacity-mid: 0.7;
+    --opacity-none: 0;
+}
+
+/* Typography */
+.economica-regular,
+.economica-bold,
+.economica-regular-italic,
+.economica-bold-italic {
+    font-family: "Economica", sans-serif;
+}
+.economica-regular {
+    font-weight: 400;
+    font-style: normal;
+}
+.economica-bold {
+    font-weight: 700;
+    font-style: normal;
+}
+.economica-regular-italic {
+    font-weight: 400;
+    font-style: italic;
+}
+.economica-bold-italic {
+    font-weight: 700;
+    font-style: italic;
+}
+
+/*Basic Formating*/
+.txt-title {
+    font-size: var(--font-title);
+    text-transform: uppercase;
+    display: flex;
+    width: var(--w-full);
+    border-bottom: var(--border-title);
+    margin-bottom: var(--margin-title-bottom);
+}
+
+.highlight-w,
+.highlight-b {
+    padding: 0 var(--pad-highlight);
+}
+.highlight-w {
+    background-color: var(--hue-white);
+    color: var(--hue-black);
+}
+.highlight-b {
+    background-color: var(--hue-black);
+    color: var(--hue-white);
+}
+p {
+    font-size: var(--font-address);
+}
+
+/* Layout */
+body {
+    font-family: "Economica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.body-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#MainMenu {
+    position: relative;
+    width: 100%;
+}
+.atra {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.atra-logo {
+    width: var(--w-logo);
+    margin-top: var(--margin-logo);
+    margin-left: var(--margin-logo);
+}
+.atra-name {
+    display: block;
+    font-size: var(--font-title);
+    text-transform: uppercase;
+    margin: auto;
+}
+.menu {
+    position: relative;
+    width: 100%;
+}
+.menu ul {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: var(--font-menu);
+    border-bottom: 0.1vw solid black;
+}
+.menu li {
+    padding: var(--pad-menu) 0;
+}
+.menu a {
+    width: 100%;
+}
+.menu a,
+.menu a:visited,
+menu a:active {
+    color: var(--hue-black);
+}
+
+/* Banner */
+.banner {
+    width: var(--w-full);
+    position: relative;
+    display: block;
+    margin-bottom: var(--margin-banner-bottom);
+}
+.banner-content {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.next .banner-track {
+    background-color: var(--hue-soon);
+}
+.tomorrow .banner-track {
+    background-color: var(--hue-tomorrow);
+}
+.today .banner-track {
+    background-color: var(--hue-today);
+}
+.now .banner-track {
+    background-color: var(--hue-now);
+}
+
+.next .banner-date {
+    color: var(--hue-soon);
+    background-color: var(--hue-black);
+}
+.tomorrow .banner-date {
+    color: var(--hue-tomorrow);
+    background-color: var(--hue-black);
+}
+.today .banner-date {
+    color: var(--hue-today);
+    background-color: var(--hue-black);
+}
+.now .banner-date {
+    color: var(--hue-now);
+    background-color: var(--hue-black);
+}
+
+.banner-track {
+    width: var(--w-full);
+    position: relative;
+    font-size: var(--font-track);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: var(--pad-banner) 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-track-space {
+    width: var(--space-track);
+}
+.banner-track .banner-content {
+    width: var(--w-full);
+    height: var(--w-full);
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    white-space: nowrap;
+    animation: banner-anim var(--anim-banner-loop-duration) infinite linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: var(--opacity-none);
+}
+.banner-track .banner-content:nth-child(1) {
+    animation-name: none;
+    position: relative;
+    animation: var(--anim-banner-intro-duration) banner-anim-intro;
+}
+.banner-track .banner-content:nth-child(3) {
+    animation-delay: 4s;
+}
+.banner-track .banner-content:nth-child(4) {
+    animation-delay: 8s;
+}
+
+.banner-date {
+    position: relative;
+    height: auto;
+    width: var(--w-full);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: var(--pad-banner) 0;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.banner-date-left,
+.banner-date-right {
+    margin: auto;
+    height: var(--w-full);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.banner-date-left {
+    font-size: var(--font-banner-left);
+}
+.banner-date-right {
+    font-size: var(--font-banner-right);
+}
+
+/* Red Alert */
+#RedAlert {
+    position: fixed;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--hue-now);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--hue-white);
+    text-transform: uppercase;
+    font-size: var(--font-redalert);
+    border: 1pt solid green;
+    animation: hide-this var(--anim-hide-this-duration);
+    z-index: var(--z-hidden);
+    opacity: var(--opacity-none);
+}
+#RedAlert div {
+    border: var(--border-redalert);
+    border-left-width: 0;
+    border-right-width: 0;
+    position: absolute;
+    width: var(--w-redalert-inner);
+    animation: red-alert-anim var(--anim-redalert-duration);
+}
+#RedAlert div:nth-child(1) {
+    height: 20%;
+}
+#RedAlert div:nth-child(2) {
+    height: 35%;
+    animation-delay: 0.1s;
+}
+#RedAlert div:nth-child(3) {
+    height: 50%;
+    animation-delay: 0.2s;
+}
+#RedAlert div:nth-child(4) {
+    height: 65%;
+    animation-delay: 0.3s;
+}
+#RedAlert div:nth-child(5) {
+    height: 80%;
+    animation-delay: 0.4s;
+}
+/* Sections */
+section {
+    position: relative;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.25;
+    margin: auto;
+    margin-bottom: var(--margin-section-bottom);
+    width: var(--w-section);
+}
+/*Maps and address*/
+.map img {
+    position: relative;
+    display: flex;
+    margin: auto;
+    width: var(--w-map);
+    height: 100%;
+}
+.map::after {
+    display: flex;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--hue-white);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("images/FullMap.png");
+    animation: 10s map-zoom infinite alternate-reverse;
+}
+/*About page*/
+#AboutInfo .txt-split-l {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+}
+#AboutInfo .txt-split-l p {
+    width: 45%;
+}
+#AboutInfo .vid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+}
+#AboutInfo .txt-split-l video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.volume-off,
+.volume-on {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--w-volume-btn);
+    height: var(--w-volume-btn);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 1rem;
+}
+.volume-off {
+    background-image: url("images/muted.png");
+}
+.volume-on {
+    background-image: url("images/unmute.png");
+}
+/*animations*/
+
+@keyframes banner-anim-intro {
+    0% {
+        opacity: var(--opacity-full);
+    }
+    5% {
+        opacity: var(--opacity-mid);
+    }
+    10% {
+        opacity: var(--opacity-full);
+    }
+    15% {
+        opacity: var(--opacity-mid);
+    }
+    30% {
+        opacity: var(--opacity-full);
+    }
+    100% {
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes banner-anim {
+    0% {
+        margin-left: var(--w-full);
+        opacity: var(--opacity-full);
+    }
+    100% {
+        margin-left: -100%;
+        opacity: var(--opacity-full);
+    }
+}
+@keyframes hide-this {
+    0%,
+    50% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-full);
+    }
+    95% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-none);
+    }
+    100% {
+        z-index: var(--z-hidden);
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes red-alert-anim {
+    0% {
+        width: var(--w-redalert-anim-start);
+    }
+    5% {
+        width: var(--w-redalert-anim-mid);
+        border-top-width: var(--border-redalert-top);
+        border-bottom-width: var(--border-redalert-bottom);
+    }
+    30% {
+        width: var(--w-redalert-anim-mid);
+        height: var(--w-full);
+    }
+    60% {
+        width: var(--w-redalert-anim-wide);
+        height: 20%;
+    }
+    80%,
+    95% {
+        height: 20%;
+        width: var(--w-redalert-anim-max);
+    }
+    100% {
+        height: 20%;
+        width: var(--w-redalert-anim-start);
+    }
+}
+@keyframes map-zoom {
+    0%,
+    30% {
+        background-size: 70%;
+        background-position: 50%;
+        filter: saturate(60%);
+    }
+    50%,
+    80% {
+        background-size: 120%;
+        background-position: 160% 95%;
+    }
+    85% {
+        background-size: 123%;
+        background-position: 160% 100%;
+    }
+    100% {
+        background-size: 70%;
+        background-position: 50% 50%;
+    }
+}
