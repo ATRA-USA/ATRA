@@ -8,6 +8,7 @@
         --w-redalert-inner: 50%;
         --w-redalert-anim-mid: 6%;
         --w-redalert-anim-wide: 30%;
+        --w-volume-btn: 4vw;
 
         /* Font Sizes (scale down from vw to rem for consistency) */
         --font-title: 3rem;
@@ -35,31 +36,6 @@
         --border-redalert: 1rem solid white;
         --border-redalert-top: 3rem;
         --border-redalert-bottom: 3rem;
-
-        /* Animation */
-        --anim-banner-intro-duration: 5s;
-        --anim-banner-loop-duration: 12s;
-        --anim-redalert-duration: 2s;
-        --anim-hide-this-duration: 3s;
-
-        /* Colors */
-        --color-bg-white: white;
-        --color-bg-black: black;
-        --color-bg-red: red;
-        --color-bg-aqua: aquamarine;
-        --color-bg-green: greenyellow;
-        --color-text-white: white;
-        --color-text-black: black;
-        --color-text-red: red;
-        --color-text-aqua: aquamarine;
-        --color-text-green: greenyellow;
-
-        /* Misc */
-        --z-hidden: -1;
-        --z-visible: 3;
-        --opacity-full: 1;
-        --opacity-mid: 0.7;
-        --opacity-none: 0;
     }
 
     .map img {
@@ -88,6 +64,7 @@
         --w-redalert-anim-mid: 10%;
         --w-redalert-anim-wide: 50%;
         --w-redalert-anim-max: 100%;
+        --w-volume-btn: 10vw;
 
         /* Font Sizes */
         --font-title: 5vw;
@@ -115,32 +92,29 @@
         --border-redalert: 3vw solid white;
         --border-redalert-top: 10vw;
         --border-redalert-bottom: 10vw;
-
-        /* Animation */
-        --anim-banner-intro-duration: 5s;
-        --anim-banner-loop-duration: 12s;
-        --anim-redalert-duration: 2s;
-        --anim-hide-this-duration: 3s;
-
-        /* Colors */
-        --color-bg-white: white;
-        --color-bg-black: black;
-        --color-bg-red: red;
-        --color-bg-aqua: aquamarine;
-        --color-bg-green: greenyellow;
-        --color-text-white: white;
-        --color-text-black: black;
-        --color-text-red: red;
-        --color-text-aqua: aquamarine;
-        --color-text-green: greenyellow;
-
-        /* Misc */
-        --z-hidden: -1;
-        --z-visible: 3;
-        --opacity-full: 1;
-        --opacity-mid: 0.7;
-        --opacity-none: 0;
     }
+}
+:root {
+    /* Animation */
+    --anim-banner-intro-duration: 5s;
+    --anim-banner-loop-duration: 12s;
+    --anim-redalert-duration: 2s;
+    --anim-hide-this-duration: 3s;
+
+    /* Colors */
+    --hue-white: white;
+    --hue-black: black;
+    --hue-now: red;
+    --hue-soon: aquamarine;
+    --hue-today: greenyellow;
+    --hue-tomorrow: yellow;
+
+    /* Misc */
+    --z-hidden: -1;
+    --z-visible: 3;
+    --opacity-full: 1;
+    --opacity-mid: 0.7;
+    --opacity-none: 0;
 }
 
 /* Typography */
@@ -167,7 +141,7 @@
     font-style: italic;
 }
 
-/* Title */
+/*Basic Formating*/
 .txt-title {
     font-size: var(--font-title);
     text-transform: uppercase;
@@ -176,17 +150,21 @@
     border-bottom: var(--border-title);
     margin-bottom: var(--margin-title-bottom);
 }
+
 .highlight-w,
 .highlight-b {
     padding: 0 var(--pad-highlight);
 }
 .highlight-w {
-    background-color: var(--color-bg-white);
-    color: var(--color-text-black);
+    background-color: var(--hue-white);
+    color: var(--hue-black);
 }
 .highlight-b {
-    background-color: var(--color-bg-black);
-    color: var(--color-text-white);
+    background-color: var(--hue-black);
+    color: var(--hue-white);
+}
+p {
+    font-size: var(--font-address);
 }
 
 /* Layout */
@@ -255,26 +233,33 @@ body {
     font-weight: 900;
 }
 .next .banner-track {
-    background-color: var(--color-bg-aqua);
+    background-color: var(--hue-soon);
+}
+.tomorrow .banner-track {
+    background-color: var(--hue-tomorrow);
 }
 .today .banner-track {
-    background-color: var(--color-bg-green);
+    background-color: var(--hue-today);
 }
 .now .banner-track {
-    background-color: var(--color-bg-red);
+    background-color: var(--hue-now);
 }
 
 .next .banner-date {
-    color: var(--color-text-aqua);
-    background-color: var(--color-bg-black);
+    color: var(--hue-soon);
+    background-color: var(--hue-black);
+}
+.tomorrow .banner-date {
+    color: var(--hue-tomorrow);
+    background-color: var(--hue-black);
 }
 .today .banner-date {
-    color: var(--color-text-green);
-    background-color: var(--color-bg-black);
+    color: var(--hue-today);
+    background-color: var(--hue-black);
 }
 .now .banner-date {
-    color: var(--color-text-red);
-    background-color: var(--color-bg-black);
+    color: var(--hue-now);
+    background-color: var(--hue-black);
 }
 
 .banner-track {
@@ -349,11 +334,11 @@ body {
     position: fixed;
     width: var(--w-full);
     height: var(--w-full);
-    background-color: var(--color-bg-red);
+    background-color: var(--hue-now);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-text-white);
+    color: var(--hue-white);
     text-transform: uppercase;
     font-size: var(--font-redalert);
     border: 1pt solid green;
@@ -415,14 +400,56 @@ section {
     left: 0;
     width: var(--w-full);
     height: var(--w-full);
-    background-color: var(--color-bg-white);
+    background-color: var(--hue-white);
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("images/FullMap.png");
     animation: 10s map-zoom infinite alternate-reverse;
 }
-.address {
-    font-size: var(--font-address);
+/*About page*/
+#AboutInfo .txt-split-l {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+}
+#AboutInfo .txt-split-l p {
+    width: 45%;
+}
+#AboutInfo .vid {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+}
+#AboutInfo .txt-split-l video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.volume-off,
+.volume-on {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--w-volume-btn);
+    height: var(--w-volume-btn);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 1rem;
+}
+.volume-off {
+    background-image: url("images/muted.png");
+}
+.volume-on {
+    background-image: url("images/unmute.png");
 }
 /*animations*/
 
