@@ -220,6 +220,11 @@ body {
 .menu a {
     width: 100%;
 }
+.menu a,
+.menu a:visited,
+menu a:active {
+    color: var(--hue-black);
+}
 
 /* Banner */
 .banner {
