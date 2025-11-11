@@ -3,50 +3,73 @@
     <head>
         <meta charset="utf-8" />
         <title>ATRA: Anti Tyranny — Red Alert</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet" />
+
         <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
+        <script src="script3.js"></script>
     </head>
-
     <body onload="onPageLoaded()">
-        
-        <div id="RallyBanner" class="banner">
-            <div class="banner-alert"></div>
+        <div id="RedAlert" style="display: none;">
+                red alert
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
 
-            <div class="banner-track">
-                <div class="banner-content"></div>
-                <div class="banner-content"></div>
-
-            </div>
-
-
-        </div>        
-
-        <nav id="MainMenu">
-            <div class="economica-bold nav-logo">
-                <div class="logo-txt">
-                    <div class="economica-bold logo-title">
-                        anti tyranny — red alert
+        <div class="body-container">
+            <header id="MainMenu">
+                <div class="atra">
+                    <img class="atra-logo" src="images/ATRALogo.png" />
+                    <div class="atra-name">
+                        anti<br />
+                        tyranny<br />
+                        red <br/>
+                        alert
+                        
                     </div>
-
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li><a>Updates</a></li>
+                        <li><a>Our Mission</a></li>
+                        <li><a>Chants</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div id="RallyBanner" class="banner next">
+                <div class="banner-track">
+                    <div class="banner-content"></div>
+                </div>
+                <div class="banner-date">
+                    <div class="banner-date-left">
+                        <div class="banner-content"></div>
+                    </div>
+                    <div class="banner-date-right">
+                        <div class="banner-content"></div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        
-        <section id="BasicInfo" class="economica-bold">
-            <div class="details">
-                <a target="_blank" href="https://www.google.com/maps/search/41.701167,+-73.926636?entry=tts&g_ep=EgoyMDI1MTAxNC4wIPu8ASoASAFQAw%3D%3D&skid=4b28bd56-5534-46b5-a3f1-11f377de84b6" alt="google maps link">
-                <div class="qr"></div>
-                <div class="address">⇡<br><span class="highlight-b">Pougheepsie NY</span><br>At the Corner of <br><span class="highlight-b">Academy St / Church St.</span></div>
-                </a>
-            </div>
-            <div class="map"></div>
-        </section>        
-        <section id="BottomBleh">
-            <div class="logo-graphic"></div>
-            <div class="txt">now is not the time for silence.<br><br>come join us <span class="highlight-b">every saturday, from 1pm to 3pm</span><br>events are updated live, 24-7</div>
-        </section>
+            <section id="AddressInfo">
+                <div class="address">
+                    <span class="txt-title">location<br></span>
+                    Poughkeepsie Ny,<br />
+                    12601<br />
+                    Academy St. &amp; Church St.
+                    <br />
+                    <br />
+                    <a target="_blank" href="https://maps.app.goo.gl/J496Q7smYNjbHptD6">See on Google Maps</a>
+                </div>
+            </section>
+
+            <section id="MapInfo">
+                <div class="map"><img src="images/FullMap.png" /></div>
+            </section>
+        </div>
     </body>
 </html>
