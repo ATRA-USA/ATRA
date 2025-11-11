@@ -19,7 +19,7 @@ function calculateRallyTiming() {
     rallyEnd.setHours(15, 0, 0, 0); // 3pm
 
     // m1 t2 w3 th4 f5 s6 sn7
-    const daysUntilSaturday = (2 - day + 7) % 7 || 7; 
+    const daysUntilSaturday = (6 - day + 7) % 7 || 7; 
     const nextSaturday = new Date(now);
     nextSaturday.setDate(now.getDate() + daysUntilSaturday);
 
