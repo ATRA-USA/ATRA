@@ -1,88 +1,168 @@
-:root {
-    /* Widths & Layout */
-    --w-full: 100%;
-    --w-section: 90%;
-    --w-map: 90%;
-    --w-logo: 60%;
-    --w-redalert-inner: 70%;
-    --w-redalert-anim-start: 0%;
-    --w-redalert-anim-mid: 10%;
-    --w-redalert-anim-wide: 50%;
-    --w-redalert-anim-max: 100%;
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+    :root {
+        /* Widths & Layout */
+        --w-section: 90%;
+        --w-map: 40%;
+        --w-logo: 40%;
+        --w-redalert-inner: 50%;
+        --w-redalert-anim-mid: 6%;
+        --w-redalert-anim-wide: 30%;
 
-    /* Font Sizes */
-    --font-title: 5vw;
-    --font-menu: 4vw;
-    --font-banner-left: 3.5vw;
-    --font-banner-right: 5vw;
-    --font-track: 3vw;
-    --font-address: 4vw;
-    --font-redalert: 20vw;
-    --one-v-w: 1vw;
-    --section-margin: 10vw;
+        /* Font Sizes (scale down from vw to rem for consistency) */
+        --font-title: 3rem;
+        --font-menu: 1.5rem;
+        --font-banner-left: 1.25rem;
+        --font-banner-right: 2rem;
+        --font-track: 1rem;
+        --font-address: 1.25rem;
+        --font-redalert: 8rem;
 
-    /* Padding & Margin */
-    --pad-menu: 6vw;
-    --pad-banner: 2vw;
-    --pad-highlight: 0.3em;
-    --margin-title-bottom: 3vw;
-    --margin-banner-bottom: 5vw;
-    --margin-section-bottom: 10vw;
-    --margin-logo: 1.5vw;
-    /* Banner Track */
-    --space-track: 10vw;
+        /* Padding & Margin (reduce vw-based spacing) */
+        --pad-menu: 2rem;
+        --pad-banner: 0.5rem;
+        --margin-title-bottom: 1.5rem;
+        --margin-banner-bottom: 2rem;
+        --margin-section-bottom: 3rem;
+        --margin-logo: 0.75rem;
 
-    /* Borders */
-    --border-title: 0.3vw solid black;
-    --border-menu: 0.1vw solid black;
-    --border-redalert: 3vw solid white;
-    --border-redalert-top: 10vw;
-    --border-redalert-bottom: 10vw;
+        /* Banner Track */
+        --space-track: 5rem;
 
-    /* Animation */
-    --anim-banner-intro-duration: 5s;
-    --anim-banner-loop-duration: 12s;
-    --anim-redalert-duration: 2s;
-    --anim-hide-this-duration: 3s;
+        /* Borders (reduce thickness for desktop) */
+        --border-title: 2px solid black;
+        --border-menu: 1px solid black;
+        --border-redalert: 1rem solid white;
+        --border-redalert-top: 3rem;
+        --border-redalert-bottom: 3rem;
 
-    /* Colors */
-    --color-bg-white: white;
-    --color-bg-black: black;
-    --color-bg-red: red;
-    --color-bg-aqua: aquamarine;
-    --color-bg-green: greenyellow;
-    --color-text-white: white;
-    --color-text-black: black;
-    --color-text-red: red;
-    --color-text-aqua: aquamarine;
-    --color-text-green: greenyellow;
+        /* Animation */
+        --anim-banner-intro-duration: 5s;
+        --anim-banner-loop-duration: 12s;
+        --anim-redalert-duration: 2s;
+        --anim-hide-this-duration: 3s;
 
-    /* Misc */
-    --z-hidden: -1;
-    --z-visible: 3;
-    --opacity-full: 1;
-    --opacity-mid: 0.7;
-    --opacity-none: 0;
+        /* Colors */
+        --color-bg-white: white;
+        --color-bg-black: black;
+        --color-bg-red: red;
+        --color-bg-aqua: aquamarine;
+        --color-bg-green: greenyellow;
+        --color-text-white: white;
+        --color-text-black: black;
+        --color-text-red: red;
+        --color-text-aqua: aquamarine;
+        --color-text-green: greenyellow;
+
+        /* Misc */
+        --z-hidden: -1;
+        --z-visible: 3;
+        --opacity-full: 1;
+        --opacity-mid: 0.7;
+        --opacity-none: 0;
+    }
+
+    .map img {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
+    }
+    .map::after {
+        height: 20rem;
+        width: 20rem;
+        display: inline;
+    }
+    .body-content {
+        width: 80%;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    :root {
+        /* Widths & Layout */
+        --w-full: 100%;
+        --w-section: 90%;
+        --w-map: 90%;
+        --w-logo: 60%;
+        --w-redalert-inner: 70%;
+        --w-redalert-anim-start: 0%;
+        --w-redalert-anim-mid: 10%;
+        --w-redalert-anim-wide: 50%;
+        --w-redalert-anim-max: 100%;
+
+        /* Font Sizes */
+        --font-title: 5vw;
+        --font-menu: 4vw;
+        --font-banner-left: 3.5vw;
+        --font-banner-right: 5vw;
+        --font-track: 3vw;
+        --font-address: 4vw;
+        --font-redalert: 20vw;
+
+        /* Padding & Margin */
+        --pad-menu: 6vw;
+        --pad-banner: 2vw;
+        --pad-highlight: 0.3em;
+        --margin-title-bottom: 3vw;
+        --margin-banner-bottom: 5vw;
+        --margin-section-bottom: 10vw;
+        --margin-logo: 1.5vw;
+        /* Banner Track */
+        --space-track: 10vw;
+
+        /* Borders */
+        --border-title: 0.3vw solid black;
+        --border-menu: 0.1vw solid black;
+        --border-redalert: 3vw solid white;
+        --border-redalert-top: 10vw;
+        --border-redalert-bottom: 10vw;
+
+        /* Animation */
+        --anim-banner-intro-duration: 5s;
+        --anim-banner-loop-duration: 12s;
+        --anim-redalert-duration: 2s;
+        --anim-hide-this-duration: 3s;
+
+        /* Colors */
+        --color-bg-white: white;
+        --color-bg-black: black;
+        --color-bg-red: red;
+        --color-bg-aqua: aquamarine;
+        --color-bg-green: greenyellow;
+        --color-text-white: white;
+        --color-text-black: black;
+        --color-text-red: red;
+        --color-text-aqua: aquamarine;
+        --color-text-green: greenyellow;
+
+        /* Misc */
+        --z-hidden: -1;
+        --z-visible: 3;
+        --opacity-full: 1;
+        --opacity-mid: 0.7;
+        --opacity-none: 0;
+    }
 }
 
 /* Typography */
-.economica-regular {
+.economica-regular,
+.economica-bold,
+.economica-regular-italic,
+.economica-bold-italic {
     font-family: "Economica", sans-serif;
+}
+.economica-regular {
     font-weight: 400;
     font-style: normal;
 }
 .economica-bold {
-    font-family: "Economica", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
 .economica-regular-italic {
-    font-family: "Economica", sans-serif;
     font-weight: 400;
     font-style: italic;
 }
 .economica-bold-italic {
-    font-family: "Economica", sans-serif;
     font-weight: 700;
     font-style: italic;
 }
@@ -92,19 +172,21 @@
     font-size: var(--font-title);
     text-transform: uppercase;
     display: flex;
-    width: 100%;
-    border-bottom: 0.3vw solid black;
-    margin-bottom: 3vw;
+    width: var(--w-full);
+    border-bottom: var(--border-title);
+    margin-bottom: var(--margin-title-bottom);
+}
+.highlight-w,
+.highlight-b {
+    padding: 0 var(--pad-highlight);
 }
 .highlight-w {
-    background-color: white;
-    color: black;
-    padding: 0 0.3em;
+    background-color: var(--color-bg-white);
+    color: var(--color-text-black);
 }
 .highlight-b {
-    background-color: black;
-    color: white;
-    padding: 0 0.3em;
+    background-color: var(--color-bg-black);
+    color: var(--color-text-white);
 }
 
 /* Layout */
@@ -132,9 +214,9 @@ body {
     width: 100%;
 }
 .atra-logo {
-    width: 60%;
-    margin-top: var(--one-v-w);
-    margin-left: var(--one-v-w);
+    width: var(--w-logo);
+    margin-top: var(--margin-logo);
+    margin-left: var(--margin-logo);
 }
 .atra-name {
     display: block;
@@ -163,38 +245,40 @@ body {
 
 /* Banner */
 .banner {
-    width: 100%;
+    width: var(--w-full);
     position: relative;
     display: block;
-    margin-bottom: 5vw;
+    margin-bottom: var(--margin-banner-bottom);
 }
 .banner-content {
     text-transform: uppercase;
     font-weight: 900;
 }
 .next .banner-track {
-    background-color: aquamarine;
+    background-color: var(--color-bg-aqua);
 }
 .today .banner-track {
-    background-color: greenyellow;
+    background-color: var(--color-bg-green);
 }
 .now .banner-track {
-    background-color: red;
+    background-color: var(--color-bg-red);
 }
+
 .next .banner-date {
-    color: aquamarine;
-    background-color: black;
+    color: var(--color-text-aqua);
+    background-color: var(--color-bg-black);
 }
 .today .banner-date {
-    color: greenyellow;
-    background-color: black;
+    color: var(--color-text-green);
+    background-color: var(--color-bg-black);
 }
 .now .banner-date {
-    color: red;
-    background-color: black;
+    color: var(--color-text-red);
+    background-color: var(--color-bg-black);
 }
+
 .banner-track {
-    width: 100%;
+    width: var(--w-full);
     position: relative;
     font-size: var(--font-track);
     overflow: hidden;
@@ -208,24 +292,24 @@ body {
     width: var(--space-track);
 }
 .banner-track .banner-content {
-    width: 100%;
-    height: 100%;
+    width: var(--w-full);
+    height: var(--w-full);
     display: flex;
     overflow: hidden;
     justify-content: center;
     align-items: center;
     font-style: italic;
     white-space: nowrap;
-    animation: banner-anim 12s infinite linear;
+    animation: banner-anim var(--anim-banner-loop-duration) infinite linear;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
+    opacity: var(--opacity-none);
 }
 .banner-track .banner-content:nth-child(1) {
     animation-name: none;
     position: relative;
-    animation: 5s banner-anim-intro;
+    animation: var(--anim-banner-intro-duration) banner-anim-intro;
 }
 .banner-track .banner-content:nth-child(3) {
     animation-delay: 4s;
@@ -233,131 +317,57 @@ body {
 .banner-track .banner-content:nth-child(4) {
     animation-delay: 8s;
 }
-@keyframes banner-anim-intro {
-    0% {
-        opacity: 1;
-    }
-    5% {
-        opacity: 0.7;
-    }
-    10% {
-        opacity: 1;
-    }
-    15% {
-        opacity: 0.7;
-    }
-    30% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-@keyframes banner-anim {
-    0% {
-        margin-left: 100%;
-        opacity: 1;
-    }
-    100% {
-        margin-left: -100%;
-        opacity: 1;
-    }
-}
+
 .banner-date {
     position: relative;
     height: auto;
-    width: 100%;
+    width: var(--w-full);
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding: var(--pad-banner) 0;
     background-color: rgba(255, 255, 255, 0.6);
 }
-.banner-date-left {
-    font-size: var(--font-banner-left);
-    height: 100%;
+.banner-date-left,
+.banner-date-right {
     margin: auto;
+    height: var(--w-full);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
 }
+.banner-date-left {
+    font-size: var(--font-banner-left);
+}
 .banner-date-right {
-    margin: auto;
-    height: 100%;
     font-size: var(--font-banner-right);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
 }
 
 /* Red Alert */
 #RedAlert {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: red;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--color-bg-red);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--color-text-white);
     text-transform: uppercase;
-    font-size: 20vw;
+    font-size: var(--font-redalert);
     border: 1pt solid green;
-    animation: hide-this 3s;
-    z-index: -1;
-    opacity: 0;
-}
-@keyframes hide-this {
-    0%,
-    50% {
-        z-index: 3;
-        opacity: 1;
-    }
-    95% {
-        z-index: 3;
-        opacity: 0;
-    }
-    100% {
-        z-index: -1;
-        opacity: 0;
-    }
+    animation: hide-this var(--anim-hide-this-duration);
+    z-index: var(--z-hidden);
+    opacity: var(--opacity-none);
 }
 #RedAlert div {
-    border: 3vw solid white;
+    border: var(--border-redalert);
     border-left-width: 0;
     border-right-width: 0;
     position: absolute;
-    width: 70%;
-    animation: red-alert-anim 2s;
-}
-@keyframes red-alert-anim {
-    0% {
-        width: 0%;
-    }
-    5% {
-        width: 10%;
-        border-top-width: 10vw;
-        border-bottom-width: 10vw;
-    }
-    30% {
-        width: 10%;
-        height: 100%;
-    }
-    60% {
-        width: 50%;
-        height: 20%;
-    }
-    80%,
-    95% {
-        height: 20%;
-        width: 100%;
-    }
-    100% {
-        height: 20%;
-        width: 0%;
-    }
+    width: var(--w-redalert-inner);
+    animation: red-alert-anim var(--anim-redalert-duration);
 }
 #RedAlert div:nth-child(1) {
     height: 20%;
@@ -378,7 +388,6 @@ body {
     height: 80%;
     animation-delay: 0.4s;
 }
-
 /* Sections */
 section {
     position: relative;
@@ -387,14 +396,16 @@ section {
     align-items: center;
     line-height: 1.25;
     margin: auto;
-    margin-bottom: var(--section-margin);
-    width: 90%;
+    margin-bottom: var(--margin-section-bottom);
+    width: var(--w-section);
 }
+/*Maps and address*/
 .map img {
     position: relative;
     display: flex;
     margin: auto;
     width: var(--w-map);
+    height: 100%;
 }
 .map::after {
     display: flex;
@@ -402,28 +413,99 @@ section {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
+    width: var(--w-full);
+    height: var(--w-full);
+    background-color: var(--color-bg-white);
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("images/FullMap.png");
     animation: 10s map-zoom infinite alternate-reverse;
 }
-@keyframes map-zoom {
+.address {
+    font-size: var(--font-address);
+}
+/*animations*/
+
+@keyframes banner-anim-intro {
     0% {
+        opacity: var(--opacity-full);
+    }
+    5% {
+        opacity: var(--opacity-mid);
+    }
+    10% {
+        opacity: var(--opacity-full);
+    }
+    15% {
+        opacity: var(--opacity-mid);
+    }
+    30% {
+        opacity: var(--opacity-full);
+    }
+    100% {
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes banner-anim {
+    0% {
+        margin-left: var(--w-full);
+        opacity: var(--opacity-full);
+    }
+    100% {
+        margin-left: -100%;
+        opacity: var(--opacity-full);
+    }
+}
+@keyframes hide-this {
+    0%,
+    50% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-full);
+    }
+    95% {
+        z-index: var(--z-visible);
+        opacity: var(--opacity-none);
+    }
+    100% {
+        z-index: var(--z-hidden);
+        opacity: var(--opacity-none);
+    }
+}
+@keyframes red-alert-anim {
+    0% {
+        width: var(--w-redalert-anim-start);
+    }
+    5% {
+        width: var(--w-redalert-anim-mid);
+        border-top-width: var(--border-redalert-top);
+        border-bottom-width: var(--border-redalert-bottom);
+    }
+    30% {
+        width: var(--w-redalert-anim-mid);
+        height: var(--w-full);
+    }
+    60% {
+        width: var(--w-redalert-anim-wide);
+        height: 20%;
+    }
+    80%,
+    95% {
+        height: 20%;
+        width: var(--w-redalert-anim-max);
+    }
+    100% {
+        height: 20%;
+        width: var(--w-redalert-anim-start);
+    }
+}
+@keyframes map-zoom {
+    0%,
+    30% {
         background-size: 70%;
         background-position: 50%;
         filter: saturate(60%);
     }
-    30% {
-        background-size: 70%;
-        background-position: 50%;
-    }
-    50% {
-        background-size: 120%;
-        background-position: 160% 95%;
-    }
+    50%,
     80% {
         background-size: 120%;
         background-position: 160% 95%;
@@ -436,8 +518,4 @@ section {
         background-size: 70%;
         background-position: 50% 50%;
     }
-}
-
-.address {
-    font-size: var(--font-address);
 }
