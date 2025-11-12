@@ -10,6 +10,9 @@
 
 */
 :root {
+
+        --w-full: 100%;
+        
     /* Animation */
     --anim-banner-intro-duration: 5s;
     --anim-banner-loop-duration: 15s;
@@ -39,6 +42,7 @@
     /* styles for browsers larger than 960px; */
     :root {
         /* Widths & Layout */
+        --w-full: 100%;
         --w-section: 90%;
         --w-map: 40%;
         --w-logo: 40%;
