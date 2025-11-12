@@ -1,3 +1,27 @@
+:root {
+    /* Animation */
+    --anim-banner-intro-duration: 5s;
+    --anim-banner-loop-duration: 15s;
+    --anim-banner-delay: 4s;
+    --anim-redalert-duration: 2s;
+    --anim-hide-this-duration: 3s;
+
+    /* Colors */
+    --hue-white: white;
+    --hue-black: black;
+    --hue-now: red;
+    --hue-soon: aquamarine;
+    --hue-today: greenyellow;
+    --hue-tomorrow: yellow;
+
+    /* Misc */
+    --z-hidden: -1;
+    --z-visible: 3;
+    --opacity-full: 1;
+    --opacity-mid: 0.7;
+    --opacity-none: 0;
+}
+
 @media only screen and (min-width: 960px) {
     /* styles for browsers larger than 960px; */
     :root {
@@ -36,6 +60,10 @@
         --border-redalert: 1rem solid white;
         --border-redalert-top: 3rem;
         --border-redalert-bottom: 3rem;
+
+        --anim-banner-intro-duration: 15s;
+        --anim-banner-loop-duration: 30s;
+        --anim-banner-delay: 10s;
     }
 
     .map img {
@@ -92,29 +120,11 @@
         --border-redalert: 3vw solid white;
         --border-redalert-top: 10vw;
         --border-redalert-bottom: 10vw;
+
+        --anim-banner-loop-duration: 15s;
+        --anim-banner-delay: 5s;
+        --anim-banner-intro-duration: 7s;
     }
-}
-:root {
-    /* Animation */
-    --anim-banner-intro-duration: 5s;
-    --anim-banner-loop-duration: 12s;
-    --anim-redalert-duration: 2s;
-    --anim-hide-this-duration: 3s;
-
-    /* Colors */
-    --hue-white: white;
-    --hue-black: black;
-    --hue-now: red;
-    --hue-soon: aquamarine;
-    --hue-today: greenyellow;
-    --hue-tomorrow: yellow;
-
-    /* Misc */
-    --z-hidden: -1;
-    --z-visible: 3;
-    --opacity-full: 1;
-    --opacity-mid: 0.7;
-    --opacity-none: 0;
 }
 
 /* Typography */
@@ -302,10 +312,10 @@ menu a:active {
     animation: var(--anim-banner-intro-duration) banner-anim-intro;
 }
 .banner-track .banner-content:nth-child(3) {
-    animation-delay: 4s;
+    animation-delay: var(--anim-banner-delay);
 }
 .banner-track .banner-content:nth-child(4) {
-    animation-delay: 8s;
+    animation-delay: calc(2 * var(--anim-banner-delay));
 }
 
 .banner-date {
@@ -480,7 +490,7 @@ section {
 }
 @keyframes banner-anim {
     0% {
-        margin-left: var(--w-full);
+        margin-left: 150%;
         opacity: var(--opacity-full);
     }
     100% {
