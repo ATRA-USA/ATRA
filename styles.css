@@ -1,3 +1,14 @@
+/*
+        <div id="RedAlert" style="display: none">
+            red alert
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+*/
 :root {
     /* Animation */
     --anim-banner-intro-duration: 5s;
@@ -13,6 +24,8 @@
     --hue-soon: aquamarine;
     --hue-today: greenyellow;
     --hue-tomorrow: yellow;
+    --hue-call: #ffdb8e;
+    --hue-response: #b8ff7e;
 
     /* Misc */
     --z-hidden: -1;
@@ -160,9 +173,10 @@
     border-bottom: var(--border-title);
     margin-bottom: var(--margin-title-bottom);
 }
-
 .highlight-w,
-.highlight-b {
+.highlight-b,
+.txt-call,
+.txt-response {
     padding: 0 var(--pad-highlight);
 }
 .highlight-w {
@@ -173,11 +187,21 @@
     background-color: var(--hue-black);
     color: var(--hue-white);
 }
+.txt-call {
+    background-color: var(--hue-call);
+}
+.txt-response {
+    background-color: var(--hue-response);
+}
+
 p {
     font-size: var(--font-address);
 }
 
 /* Layout */
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: "Economica", sans-serif;
     font-weight: 700;
@@ -345,6 +369,7 @@ menu a:active {
 }
 
 /* Red Alert */
+/*
 #RedAlert {
     position: fixed;
     width: var(--w-full);
@@ -465,6 +490,20 @@ section {
 }
 .volume-on {
     background-image: url("images/unmute.png");
+}
+
+/*Chants*/
+#Chants .txt-indent {
+    margin-left: 1rem;
+}
+#Chants {
+    line-height: 1.5;
+}
+.table-contents a,
+.table-contents a:active,
+table-contents a:visited {
+    color: black;
+    text-transform: uppercase;
 }
 /*animations*/
 
