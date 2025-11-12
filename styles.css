@@ -584,12 +584,11 @@ table-contents a:visited {
     30% {
         background-size: 70%;
         background-position: 50%;
-        filter: saturate(60%);
     }
     50%,
     80% {
         background-size: 120%;
-        background-position: 160% 95%;
+        background-position: 160% 97%;
     }
     85% {
         background-size: 123%;
