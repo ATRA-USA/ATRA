@@ -37,7 +37,7 @@
     --opacity-none: 0;
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 800px) {
     /* styles for browsers larger than 960px; */
     :root {
         /* Widths & Layout */
